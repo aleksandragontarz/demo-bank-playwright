@@ -12,14 +12,14 @@ test.describe('Pulpit tests', () => {
     await page.waitForLoadState('domcontentloaded');
   });
   // Arrange
-  const receiverId = '2';
-  const transferTitle = 'pizza';
   const transferAmount = '120';
-  const expectedTransferReceiver = 'Chuck Demobankowy';
-
-  const receiverNumber = '502 xxx xxx';
 
   test('quick payment with correct data', async ({ page }) => {
+    // Arrange
+    const receiverId = '2';
+    const transferTitle = 'pizza';
+    const expectedTransferReceiver = 'Chuck Demobankowy';
+
     // Act
     await page.locator('#widget_1_transfer_receiver').selectOption(receiverId);
     await page.locator('#widget_1_transfer_amount').fill(transferAmount);
@@ -35,6 +35,9 @@ test.describe('Pulpit tests', () => {
   });
 
   test('successful phone top-up', async ({ page }) => {
+    // Arrange
+    const receiverNumber = '502 xxx xxx';
+
     // Act
     await page.locator('#widget_1_topup_receiver').selectOption(receiverNumber);
     await page.locator('#widget_1_topup_amount').fill(transferAmount);

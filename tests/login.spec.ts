@@ -4,16 +4,12 @@ test.describe('User login to Demobank', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
-
-  // Arrange
   const userId = 'test1234';
-  const userPassword = 'test1234';
-  const expectedUserName = 'Jan Demobankowy';
-  const invalidUserId = 'test';
-  const errorMessageLogin = 'identyfikator ma min. 8 znaków';
-  const invalidPassword = 'test';
-  const errorMessagePassword = 'hasło ma min. 8 znaków';
   test('successful login', async ({ page }) => {
+    // Arrange
+    const userPassword = 'test1234';
+    const expectedUserName = 'Jan Demobankowy';
+
     // Act
     await page.getByTestId('login-input').fill(userId);
     await page.getByTestId('password-input').fill(userPassword);
@@ -25,6 +21,9 @@ test.describe('User login to Demobank', () => {
   });
 
   test('unsuccessful login with too short username', async ({ page }) => {
+    // Arrange
+    const invalidUserId = 'test';
+    const errorMessageLogin = 'identyfikator ma min. 8 znaków';
     // Act
     await page.getByTestId('login-input').fill(invalidUserId);
     await page.getByTestId('login-input').blur();
@@ -37,6 +36,10 @@ test.describe('User login to Demobank', () => {
   });
 
   test('unsuccessful login with too short password', async ({ page }) => {
+    // Arrange
+    const invalidPassword = 'test';
+    const errorMessagePassword = 'hasło ma min. 8 znaków';
+
     // Act
     await page.getByTestId('login-input').fill(userId);
     await page.getByTestId('password-input').fill(invalidPassword);
