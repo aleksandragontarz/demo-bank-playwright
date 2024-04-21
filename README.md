@@ -1,5 +1,7 @@
 # Test Automation training from jaktestowac.pl
 
+This is a Test Automation project based on `Playwright` and `TypeScript`. The tested page is a simple demo of a bank.
+
 ## Links
 
 - course https://jaktestowac.pl/course/playwright-wprowadzenie/
@@ -21,10 +23,21 @@
   `npx playwright test --headed`
 - view report  
   `npx playwright show-report`
-- cancelling Node process  
-  hit twice <kbd>Ctrl</kbd> + <kbd>C</kbd>
 - run Trace Viewer on zip file  
   `npx playwright show-trace trace.zip`
+- run tests form exact file  
+  `npx playwright test tests/login.spec.ts`
+
+### Updating Playwright
+
+- check if Playwright should be updated  
+  `npm outdated @playwright/test`
+- update Playwright  
+  `npm i @playwright/test`
+- update browsers  
+  `npx playwright install`
+- verify Playwright version  
+  `npx @playwright/test --version`
 
 ## Visual Studio Code
 
@@ -34,58 +47,26 @@
 - Autosave: in File -> Auto Save
 - Timeline: file context menu -> Open Timeline
 - Formatting: editor -> context menu -> Format Document
+- Formatting shortcut: <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd>
 - Searching: editor -> <kbd>CTRL</kbd> + <kbd>F</kbd>
 - Accept hint in editor: <kbd>Enter</kbd>
 - Comment/Uncomment: <kbd>Ctrl</kbd> + <kbd>/</kbd>
 - Duplicate line: <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd>
-- Use more than one terminal: <kbd>+</kbd> button in TERMINAL
 - Extract to variable: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>
 - Move line i.e. up: <kbd>Alt</kbd> + <kbd>↑</kbd>
+- Show autocomplete suggestion: <kbd>Ctrl</kbd> + <kbd>Spacebar</kbd>
 - Creating a new variable: Refactor <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> -> Extract to constant in enclosing scope
 
-## Plugins
+### Terminal (console)
+- Use more than one terminal: <kbd>+</kbd> button in TERMINAL
+- Cancelling Node process: hit twice <kbd>Ctrl</kbd> + <kbd>C</kbd>
+- Open file: <kbd>Ctrl</kbd> + mouse click
+- Autocomplete: <kbd>Tab</kbd>
+
+## Extensions
 
 - GitLens - view details of your repository i.e. commits history
 - Prettier - default formatter for editor
-
-## Playwright
-
-### Playwright Config modifications
-
-- config file `playwright.config.ts`
-- disable browsers, i.e. Firefox
-  ```javascript
-  // {
-  //   name: 'firefox',
-  //   use: {
-  //     ...devices['Desktop Firefox'],
-  //   },
-  // },
-  ```
-
-### Playwright snippets
-
-- import:
-  ```typescript
-  import { test, expect } from '@playwright/test';
-  ```
-- test:
-  ```typescript
-  test('test description', async ({ page }) => {});
-  ```
-- describe:
-
-  ```typescript
-  test.describe('Group description', () => {});
-  ```
-
-- running given test: `test.only`
-
-### Locators
-
-- `getByTestId` i.e. `getByTestId('login-input')` for element with `data-testid="login-input"`
-- `getByRole` i.e. `getByRole('button', { name: 'wykonaj' })`
-- `locator` i.e. `locator('#some-id')` (with `css` selector) for element with attribute `id="some-id"`
 
 ## Playwright
 
@@ -107,23 +88,43 @@
       video: {'retain-on-failure'},
   },
   ```
-- enable Trace Viewer on fail
+- enable Trace Viewer on fial
   ```javascript
   use: {
       trace: {'retain-on-failure'},
   },
   ```
 
-### Updating Playwright
+### Playwright snippets
 
-- check if Playwright should be updated  
-  `npm outdated @playwright/test`
-- update Playwright  
-  `npm i @playwright/test`
-- update browsers  
-  `npx playwright install`
-- verify Playwright version  
-  `npx @playwright/test --version`
+- import:
+  ```typescript
+  import { test, expect } from '@playwright/test';
+  ```
+- test:
+  ```typescript
+  test('test description', async ({ page }) => {
+    //your code
+  });
+  ```
+- describe:
+  ```typescript
+  test.describe('Group description', () => {
+    //your code
+  });
+  ```
+- hook beforeEach:
+  ```typescript
+  test.befoerEach('async ({ page }) => {
+    //your code
+  });
+- running given test: `test.only`
+
+### Locators
+
+- `getByTestId` i.e. `getByTestId('login-input')` for element with `data-testid="login-input"`
+- `getByRole` i.e. `getByRole('button', { name: 'wykonaj' })`
+- `locator` i.e. `locator('#some-id')` (with `css` selector) for element with attribute `id="some-id"`
 
 ## Other
 
@@ -133,12 +134,6 @@
 - open DevTools <kbd>F12</kbd> or right click `Inspect`
 - get selector: right click on element -> Copy -> Copy selector
 - testing CSS selectors in Console: `$$('selector')`
-
-### AAA template
-
-- Arrange: test data preparation
-- Act: execution of test actions
-- Assert: verify the expected results.
 
 ### Prettier
 
@@ -158,10 +153,17 @@
   - set rules in `.prettierrc.json`
     ```
     {
-        "singleQuote": true
+        "singleQuote": true,
+        "endOfLine": "auto"
     }
     ```
 
 - run Prettier  
   `npx prettier --write .`
 - additionaly you can install VSC extension: **Prettier**
+
+### AAA template
+
+- Arrange: test data preparation
+- Act: execution of test actions
+- Assert: verify the expected results.
