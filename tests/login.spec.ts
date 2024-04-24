@@ -1,13 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { loginData } from '../test-data/login.data';
 
 test.describe('User login to Demobank', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
-  const userId = 'test1234';
+  const userId = loginData.userId;
   test('successful login', async ({ page }) => {
     // Arrange
-    const userPassword = 'test1234';
+    const userPassword = loginData.password;
     const expectedUserName = 'Jan Demobankowy';
 
     // Act
