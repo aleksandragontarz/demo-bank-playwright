@@ -46,8 +46,6 @@ This is a Test Automation project based on `Playwright` and `TypeScript`. The te
 - Preview: for README.md
 - Autosave: in File -> Auto Save
 - Timeline: file context menu -> Open Timeline
-- Formatting: editor -> context menu -> Format Document
-- Formatting shortcut: <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd>
 - Searching: editor -> <kbd>CTRL</kbd> + <kbd>F</kbd>
 - Accept hint in editor: <kbd>Enter</kbd>
 - Comment/Uncomment: <kbd>Ctrl</kbd> + <kbd>/</kbd>
@@ -55,6 +53,18 @@ This is a Test Automation project based on `Playwright` and `TypeScript`. The te
 - Extract to variable: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>
 - Move line i.e. up: <kbd>Alt</kbd> + <kbd>↑</kbd>
 - Show autocomplete suggestion: <kbd>Ctrl</kbd> + <kbd>Spacebar</kbd>
+- Formatting: editor -> context menu -> Format Document
+- Formatting shortcut: <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd>
+- Format code on save: 
+  - Top menu: View -> Open Command Palette
+  - Type: user settings - chose `Preferences: Open User Settings`
+  - Search: format on save
+  - Edit: check `Editor Format On Save`
+- Reload Window: 
+  - <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>
+  - Find and use: `Developer: Reload Window`
+- Rename in opened files: <kbd>F2</kbd>
+- Show quick fix: <kbd>Ctrl</kbd> + </kbd>.</kbd>
 - Creating a new variable: Refactor <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> -> Extract to constant in enclosing scope
 
 ### Terminal (console)
@@ -77,6 +87,7 @@ To quickly evaluate code use `DEBUG CONSOLE`.
 
 - GitLens - view details of your repository i.e. commits history
 - Prettier - default formatter for editor
+- Playwright Test for VSCode - run and record tests form VSC
 
 ## Playwright
 
@@ -172,6 +183,7 @@ To quickly evaluate code use `DEBUG CONSOLE`.
 - run Prettier  
   `npx prettier --write .`
 - additionaly you can install VSC extension: **Prettier**
+  - and set default VSC formatter as Prettier (right mouse button and `Format document with ...`)
 
 ### package.json example scripts
 
@@ -183,6 +195,7 @@ To quickly evaluate code use `DEBUG CONSOLE`.
   `"test:pulpit:hd" : "npm run test tests/pulpit.spec.ts -- --headed"`
 
 Scripts can be run in standard and debug mode by:
+
 - hovering over script name and using opition **Run**
 - entering command `npm run script_name` i.e. `npm run test`
 - using `NPM Scripts` tab in **Explorer** view (need to be enabled in **EXPLORER** settings)
