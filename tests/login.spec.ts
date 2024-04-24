@@ -8,7 +8,7 @@ test.describe('User login to Demobank', () => {
   const userId = loginData.userId;
   test('successful login', async ({ page }) => {
     // Arrange
-    const userPassword = loginData.password;
+    const userPassword = loginData.userPassword;
     const expectedUserName = 'Jan Demobankowy';
 
     // Act
